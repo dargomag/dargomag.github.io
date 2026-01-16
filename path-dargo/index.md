@@ -18,5 +18,6 @@ title: Путь Дарго́
 - [49. Перестройка](huns.md)
 
  
-- [Весь текст одним файлом в формате.pdf](path-dargo/put_dargo.pdf)
+
+[Весь текст одним файлом в формате.pdf](path-dargo/put_dargo.pdf)
 
