@@ -14,7 +14,7 @@ title: Главная
 
   </td>
     <td valign="top">
-      <img src="cat.jpg" alt="урахинец" style="max-width: 200px;">
+      <img src="cat.jpg" alt="урахинец" style="max-width: 300px;">
     </td>
   </tr>
 </table>
