@@ -4,6 +4,7 @@ title: Главная
 <table>
   <tr>
     <td valign="top" style="padding-right: 20px;">
+    <!-- Оглавление -->
 - [Путь Дарго́](path-dargo/)
 - [Парадигма Дарго́](paradigm/)
 - [Календарь](Календарь/)
