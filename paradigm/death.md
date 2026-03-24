@@ -8,7 +8,7 @@
 
 <div align="center" style="text-align:center; margin-bottom:11px">
 <hr align="center" size="1" width="100%" /></div>
-<span style="font-size:12pt"><span style="line-height:115%"><span style="font-family:Aptos,sans-serif"><b>1. Четыре силы мироздания</b></span></span></span><br />
+<span style="font-size:12pt"><span style="line-height:115%"><span style="font-family:Aptos,sans-serif"><b>1. Пять сил мироздания</b></span></span></span><br />
 <span style="font-size:12pt"><span style="line-height:115%"><span style="font-family:Aptos,sans-serif">В парадигме Дарго мир устроен не как простое противостояние Бога и Дьявола. В мире действуют самостоятельные силы, каждая со своей сферой:</span></span></span>
 
 <ul>
