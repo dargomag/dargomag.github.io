@@ -7,6 +7,7 @@ title: Джан дерхъаб!
     <!-- Оглавление -->
  <ul>
         <li><a href="path-dargo"> Путь Дарго́</a></li>
+        <li><a href="adats"> Адаты </a></li>
         <li><a href="paradigm"> Парадигма Дарго́</a></li>
         <li><a href="Календарь"> Календарь</a></li>
         <li><a href="stones"> Камни</a></li>
