@@ -5,7 +5,6 @@ title: Джан дерхъаб!
 
 <table>
   <tr>
-    <td>    123 </td>
     <td valign="top" style="padding-right: 20px;">
     <!-- Оглавление -->
  <ul>
