@@ -1,4 +1,4 @@
-<span style="font-size:12pt"><span style="line-height:115%"><span style="font-family:Aptos,sans-serif"><b>О жизни и смерти: диалектика победы</b></span></span></span><br />
+<span style="font-size:12pt"><span style="line-height:115%"><span style="font-family:Aptos,sans-serif"><b>О жизни и смерти: диалектика победы</b></span></span><br />
 
 <div align="center" style="text-align:center; margin-bottom:11px">
 <hr align="center" size="1" width="100%" /></div>
