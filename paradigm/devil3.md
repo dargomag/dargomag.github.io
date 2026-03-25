@@ -1,6 +1,6 @@
 <span style="font-size:12pt"><span style="line-height:115%"><span style="font-family:Aptos,sans-serif"><b>Дьявол и усложнение: необходимая триада</b></span></span></span><br />
 <br />
-<span style="font-size:12pt"><span style="line-height:115%"><span style="font-family:Aptos,sans-serif">В нашем диалоге, развернувшемся чате с depseekом от вопроса о восхвалениях к онтологии жизни и смерти, я не упомянул одну из фундаментальных категорий парадигмы Дарго́ &mdash;&nbsp;<b>Усложнение</b>. А надо ли было? И ответ ясен:&nbsp;<i>не просто надо, а необходимо</i>. Без усложнения картина остаётся неполной, и в этом тексте я восполняю пробел.</span></span></span>
+<span style="font-size:12pt"><span style="line-height:115%"><span style="font-family:Aptos,sans-serif">В нашем диалоге, развернувшемся в чате с depseekом от вопроса о восхвалениях к онтологии жизни и смерти, я не упомянул одну из фундаментальных категорий парадигмы Дарго́ &mdash;&nbsp;<b>Усложнение</b>. А надо ли было? И ответ ясен:&nbsp;<i>не просто надо, а необходимо</i>. Без усложнения картина остаётся неполной, и в этом тексте я восполняю пробел.</span></span></span>
 <div align="center" style="text-align:center; margin-bottom:11px">
 <hr align="center" size="1" width="100%" /></div>
 <span style="font-size:12pt"><span style="line-height:115%"><span style="font-family:Aptos,sans-serif"><b>1. Триада бытия: движение, взаимодействие, усложнение</b></span></span></span><br />
