@@ -1,5 +1,5 @@
 <span style="font-size:12pt"><span style="line-height:115%"><span style="font-family:Aptos,sans-serif"><b>О жизни и смерти: диалектика победы</b></span></span></span><br />
-<span style="font-size:12pt"><span style="line-height:115%"><span style="font-family:Aptos,sans-serif"><b>Продолжение размышлений о невозможности восхваления Дьяволу</b></span></span></span>
+</span>
 <div align="center" style="text-align:center; margin-bottom:11px">
 <hr align="center" size="1" width="100%" /></div>
 <span style="font-size:12pt"><span style="line-height:115%"><span style="font-family:Aptos,sans-serif">В предыдущем трактате я показал: всякое оформленное слово, движение, действие &mdash; поклонение Богу. Нет и не может быть такого поступка, который по факту стал бы поклонением Дьяволу, ибо любая форма, даже обращённая против Бога, увеличивает царство Борга.</span></span></span><br />
