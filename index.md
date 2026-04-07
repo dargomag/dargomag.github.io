@@ -11,7 +11,7 @@ title: Джан дерхъаб!
         <li><a href="path-dargo"> Путь Дарго́</a></li>
         <li><a href="adats"> Адаты </a></li>
         <li><a href="paradigm"> Парадигма Дарго́</a></li>
-        <li><a href="Календарь"> Календарь</a></li>
+        <li><a href="calendar"> Календарь</a></li>
         <li><a href="stones"> Камни</a></li>
       </ul>     
 
