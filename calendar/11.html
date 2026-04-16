@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Математика — Дарго календарь</title>
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f4f4;
+}
+
+.calendar {
+    display: flex;
+    max-width: 1000px;
+    margin: 40px auto;
+    background: white;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+/* Левая часть */
+.left {
+    width: 60%;
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.math-pattern {
+    font-size: 22px;
+    opacity: 0.15;
+    line-height: 1.6;
+    padding: 40px;
+}
+
+/* Правая часть */
+.right {
+    width: 40%;
+    padding: 20px;
+}
+
+.month-title {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.date-range {
+    color: #666;
+    margin-bottom: 15px;
+}
+
+/* Сетка календаря */
+.grid {
+    display: grid;
+    grid-template-columns: 40px repeat(7, 1fr);
+    gap: 5px;
+}
+
+.day-name, .week-num {
+    font-weight: bold;
+    text-align: center;
+    font-size: 12px;
+    color: #555;
+}
+
+.day {
+    text-align: center;
+    padding: 8px 0;
+    background: #fafafa;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.week-num {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.day:hover {
+    background: #2c5364;
+    color: white;
+    cursor: pointer;
+}
+
+/* адаптив */
+@media (max-width: 700px) {
+    .calendar {
+        flex-direction: column;
+    }
+    .left, .right {
+        width: 100%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="calendar">
+
+    <!-- Левая часть -->
+    <div class="left">
+        <div class="math-pattern">
+            ∑ ∫ √ π e i² = -1 <br>
+            f(x) = x² + 1 <br>
+            lim x→∞ <br>
+            ∆x → 0 <br>
+            ∂/∂x <br>
+            a² + b² = c²
+        </div>
+    </div>
+
+    <!-- Правая часть -->
+    <div class="right">
+        <div class="month-title">Математика</div>
+        <div class="date-range">22 Декабрь — 21 Январь</div>
+
+        <div class="grid">
+            <!-- заголовки -->
+            <div></div>
+            <div class="day-name">Пн</div>
+            <div class="day-name">Вт</div>
+            <div class="day-name">Ср</div>
+            <div class="day-name">Чт</div>
+            <div class="day-name">Пт</div>
+            <div class="day-name">Сб</div>
+            <div class="day-name">Вс</div>
+
+            <!-- неделя 1 -->
+            <div class="week-num">1</div>
+            <div class="day">1</div><div class="day">2</div><div class="day">3</div><div class="day">4</div><div class="day">5</div><div class="day">6</div><div class="day">7</div>
+
+            <!-- неделя 2 -->
+            <div class="week-num">2</div>
+            <div class="day">8</div><div class="day">9</div><div class="day">10</div><div class="day">11</div><div class="day">12</div><div class="day">13</div><div class="day">14</div>
+
+            <!-- неделя 3 -->
+            <div class="week-num">3</div>
+            <div class="day">15</div><div class="day">16</div><div class="day">17</div><div class="day">18</div><div class="day">19</div><div class="day">20</div><div class="day">21</div>
+
+            <!-- неделя 4 -->
+            <div class="week-num">4</div>
+            <div class="day">22</div><div class="day">23</div><div class="day">24</div><div class="day">25</div><div class="day">26</div><div class="day">27</div><div class="day">28</div>
+
+            <!-- неделя 5 -->
+            <div class="week-num">5</div>
+            <div class="day">29</div><div class="day">30</div><div class="day">31</div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
