@@ -7,88 +7,102 @@
 <style>
 body {
     margin: 0;
-    font-family: "Georgia", serif;
-    background: linear-gradient(to bottom, #e9f2f7, #ffffff);
+    background: #f2f2f2;
+    font-family: "Segoe UI", Arial, sans-serif;
 }
 
-.container {
-    max-width: 1000px;
+.wrapper {
+    max-width: 1100px;
     margin: 40px auto;
-    padding: 30px;
-    background: rgba(255,255,255,0.9);
-    box-shadow: 0 20px 50px rgba(0,0,0,0.08);
 }
 
 /* Заголовок */
-.title {
-    font-size: 32px;
-    text-align: center;
-    margin-bottom: 10px;
+.header {
+    font-size: 28px;
+    margin-bottom: 15px;
 }
 
-.subtitle {
-    text-align: center;
-    font-size: 13px;
-    color: #666;
-    margin-bottom: 25px;
+/* Контейнер */
+.calendar {
+    display: flex;
+    background: white;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.08);
 }
 
-/* Текст */
+/* Левая часть */
+.left {
+    width: 55%;
+    padding: 30px;
+    color: #ffffff;
+    line-height: 1.6;
+
+    background:
+        linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
+        url('https://images.unsplash.com/photo-1483664852095-d6cc6870702d?q=80&w=1200');
+    background-size: cover;
+    background-position: center;
+}
+
 .text {
     font-size: 15px;
-    line-height: 1.7;
-    color: #333;
-    margin-bottom: 35px;
+}
+
+/* Правая часть */
+.right {
+    width: 45%;
+    padding: 25px;
 }
 
 /* Сетка */
 .grid {
     display: grid;
-    grid-template-columns: 50px repeat(7, 1fr);
+    grid-template-columns: 45px repeat(7, 1fr);
     gap: 6px;
 }
 
 /* дни недели */
+.day-name {
+    font-size: 11px;
+    text-align: center;
+}
+
 .day-name a {
     text-decoration: none;
-    color: #444;
-    font-size: 12px;
-    display: block;
-    text-align: center;
+    color: #555;
 }
 
 .day-name a:hover {
     text-decoration: underline;
 }
 
-/* недели */
+/* номер недели */
 .week-num {
     font-size: 11px;
-    background: #eaeaea;
+    background: #e8e8e8;
+    border-radius: 6px;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 5px;
 }
 
 /* дни */
 .day {
     background: #fafafa;
     border-radius: 6px;
-    padding: 10px 0;
     text-align: center;
+    padding: 8px 0;
+    line-height: 1.2;
+}
+
+.day:hover {
+    background: #1f3a4a;
+    color: white;
 }
 
 /* дробь */
-.frac {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-size: 18px;
-}
-
 .top {
-    font-weight: bold;
+    font-size: 22px;
+    display: block;
 }
 
 .bottom {
@@ -106,80 +120,92 @@ body {
 
 <body>
 
-<div class="container">
+<div class="wrapper">
 
-    <div class="title">Математика — первый месяц года</div>
-    <div class="subtitle">(22 декабря — 21 января по григорианскому стилю)</div>
+<div class="header">Математика — первый месяц года</div>
 
-    <div class="text">
-    Изначально слово «математика» на древнегреческом языке означало «изучение» или «наука». 
-    Оно исторически сложилось на основе измерения и описания природы — творений Бога. 
-    Современная математика не столько наука, сколько язык естественных наук, но широко используется 
-    в них как для точной формулировки их содержания, так и для получения новых результатов. 
-    Математика предоставляет язык другим наукам, тем самым выявляет их структурную взаимосвязь 
-    и способствует нахождению самых общих законов Вселенной — законов Бога.
+<div class="calendar">
+
+    <!-- Левая часть -->
+    <div class="left">
+        <div class="text">
+        Изначально слово «математика» на древнегреческом языке означало «изучение» или «наука». 
+        Оно исторически сложилось на основе измерения и описания природы — творений Бога. 
+        Современная математика не столько наука, сколько язык естественных наук, но широко 
+        используется в них как для точной формулировки их содержания, так и для получения 
+        новых результатов. Математика предоставляет язык другим наукам, тем самым выявляет 
+        их структурную взаимосвязь и способствует нахождению самых общих законов Вселенной — 
+        законов Бога.
+        </div>
     </div>
 
-    <div class="grid">
+    <!-- Правая часть -->
+    <div class="right">
 
-        <!-- заголовок -->
-        <div></div>
-        <div class="day-name"><a href="mon.html">ПН</a></div>
-        <div class="day-name"><a href="tue.html">ВТ</a></div>
-        <div class="day-name"><a href="wed.html">СР</a></div>
-        <div class="day-name"><a href="thu.html">ЧТ</a></div>
-        <div class="day-name"><a href="fri.html">ПТ</a></div>
-        <div class="day-name"><a href="sat.html">СБ</a></div>
-        <div class="day-name"><a href="sun.html">ВС</a></div>
+        <div class="grid">
 
-        <!-- неделя 1 -->
-        <div class="week-num">1</div>
-        <div class="day"><div class="frac"><div class="top">1</div><div class="bottom">22</div></div></div>
-        <div class="day"><div class="frac"><div class="top">2</div><div class="bottom">23</div></div></div>
-        <div class="day"><div class="frac"><div class="top">3</div><div class="bottom">24</div></div></div>
-        <div class="day"><div class="frac"><div class="top">4</div><div class="bottom">25</div></div></div>
-        <div class="day"><div class="frac"><div class="top">5</div><div class="bottom">26</div></div></div>
-        <div class="day"><div class="frac"><div class="top">6</div><div class="bottom">27</div></div></div>
-        <div class="day"><div class="frac"><div class="top">7</div><div class="bottom">28</div></div></div>
+            <!-- заголовок -->
+            <div></div>
+            <div class="day-name"><a href="mon.html">ПН</a></div>
+            <div class="day-name"><a href="tue.html">ВТ</a></div>
+            <div class="day-name"><a href="wed.html">СР</a></div>
+            <div class="day-name"><a href="thu.html">ЧТ</a></div>
+            <div class="day-name"><a href="fri.html">ПТ</a></div>
+            <div class="day-name"><a href="sat.html">СБ</a></div>
+            <div class="day-name"><a href="sun.html">ВС</a></div>
 
-        <!-- неделя 2 -->
-        <div class="week-num">2</div>
-        <div class="day"><div class="frac"><div class="top">8</div><div class="bottom">29</div></div></div>
-        <div class="day"><div class="frac"><div class="top">9</div><div class="bottom">30</div></div></div>
-        <div class="day"><div class="frac"><div class="top">10</div><div class="bottom">31</div></div></div>
-        <div class="day"><div class="frac"><div class="top">11</div><div class="bottom">1</div></div></div>
-        <div class="day"><div class="frac"><div class="top">12</div><div class="bottom">2</div></div></div>
-        <div class="day"><div class="frac"><div class="top">13</div><div class="bottom">3</div></div></div>
-        <div class="day"><div class="frac"><div class="top">14</div><div class="bottom">4</div></div></div>
+            <!-- неделя 1 -->
+            <div class="week-num">1</div>
+            <div class="day"><span class="top">1</span><span class="bottom">22</span></div>
+            <div class="day"><span class="top">2</span><span class="bottom">23</span></div>
+            <div class="day"><span class="top">3</span><span class="bottom">24</span></div>
+            <div class="day"><span class="top">4</span><span class="bottom">25</span></div>
+            <div class="day"><span class="top">5</span><span class="bottom">26</span></div>
+            <div class="day"><span class="top">6</span><span class="bottom">27</span></div>
+            <div class="day"><span class="top">7</span><span class="bottom">28</span></div>
 
-        <!-- неделя 3 -->
-        <div class="week-num">3</div>
-        <div class="day"><div class="frac"><div class="top">15</div><div class="bottom">5</div></div></div>
-        <div class="day"><div class="frac"><div class="top">16</div><div class="bottom">6</div></div></div>
-        <div class="day"><div class="frac"><div class="top">17</div><div class="bottom">7</div></div></div>
-        <div class="day"><div class="frac"><div class="top">18</div><div class="bottom">8</div></div></div>
-        <div class="day"><div class="frac"><div class="top">19</div><div class="bottom">9</div></div></div>
-        <div class="day"><div class="frac"><div class="top">20</div><div class="bottom">10</div></div></div>
-        <div class="day"><div class="frac"><div class="top">21</div><div class="bottom">11</div></div></div>
+            <!-- неделя 2 -->
+            <div class="week-num">2</div>
+            <div class="day"><span class="top">8</span><span class="bottom">29</span></div>
+            <div class="day"><span class="top">9</span><span class="bottom">30</span></div>
+            <div class="day"><span class="top">10</span><span class="bottom">31</span></div>
+            <div class="day"><span class="top">11</span><span class="bottom">1</span></div>
+            <div class="day"><span class="top">12</span><span class="bottom">2</span></div>
+            <div class="day"><span class="top">13</span><span class="bottom">3</span></div>
+            <div class="day"><span class="top">14</span><span class="bottom">4</span></div>
 
-        <!-- неделя 4 -->
-        <div class="week-num">4</div>
-        <div class="day"><div class="frac"><div class="top">22</div><div class="bottom">12</div></div></div>
-        <div class="day"><div class="frac"><div class="top">23</div><div class="bottom">13</div></div></div>
-        <div class="day"><div class="frac"><div class="top">24</div><div class="bottom">14</div></div></div>
-        <div class="day"><div class="frac"><div class="top">25</div><div class="bottom">15</div></div></div>
-        <div class="day"><div class="frac"><div class="top">26</div><div class="bottom">16</div></div></div>
-        <div class="day"><div class="frac"><div class="top">27</div><div class="bottom">17</div></div></div>
-        <div class="day"><div class="frac"><div class="top">28</div><div class="bottom">18</div></div></div>
+            <!-- неделя 3 -->
+            <div class="week-num">3</div>
+            <div class="day"><span class="top">15</span><span class="bottom">5</span></div>
+            <div class="day"><span class="top">16</span><span class="bottom">6</span></div>
+            <div class="day"><span class="top">17</span><span class="bottom">7</span></div>
+            <div class="day"><span class="top">18</span><span class="bottom">8</span></div>
+            <div class="day"><span class="top">19</span><span class="bottom">9</span></div>
+            <div class="day"><span class="top">20</span><span class="bottom">10</span></div>
+            <div class="day"><span class="top">21</span><span class="bottom">11</span></div>
 
-        <!-- неделя 5 -->
-        <div class="week-num">5</div>
-        <div class="day"><div class="frac"><div class="top">29</div><div class="bottom">19</div></div></div>
-        <div class="day"><div class="frac"><div class="top">30</div><div class="bottom">20</div></div></div>
-        <div class="day"><div class="frac"><div class="top">31</div><div class="bottom">21</div></div></div>
-        <div class="empty"></div><div class="empty"></div><div class="empty"></div><div class="empty"></div>
+            <!-- неделя 4 -->
+            <div class="week-num">4</div>
+            <div class="day"><span class="top">22</span><span class="bottom">12</span></div>
+            <div class="day"><span class="top">23</span><span class="bottom">13</span></div>
+            <div class="day"><span class="top">24</span><span class="bottom">14</span></div>
+            <div class="day"><span class="top">25</span><span class="bottom">15</span></div>
+            <div class="day"><span class="top">26</span><span class="bottom">16</span></div>
+            <div class="day"><span class="top">27</span><span class="bottom">17</span></div>
+            <div class="day"><span class="top">28</span><span class="bottom">18</span></div>
+
+            <!-- неделя 5 -->
+            <div class="week-num">5</div>
+            <div class="day"><span class="top">29</span><span class="bottom">19</span></div>
+            <div class="day"><span class="top">30</span><span class="bottom">20</span></div>
+            <div class="day"><span class="top">31</span><span class="bottom">21</span></div>
+            <div class="empty"></div><div class="empty"></div><div class="empty"></div><div class="empty"></div>
+
+        </div>
 
     </div>
+
+</div>
 
 </div>
 
