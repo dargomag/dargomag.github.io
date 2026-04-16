@@ -121,7 +121,7 @@ body {
 
 <div class="wrapper">
 
-<div class="header">Математика — первый месяц года</div>
+<div class="header"> Календарь Дарго: Математика — первый месяц года</div>
 
 <div class="calendar">
 
