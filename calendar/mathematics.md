@@ -1,7 +1,7 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<title>Математика — первый месяц года</title>
+<title>Календарь Дарго: Математика — первый месяц года</title>
 
 <style>
 body {
