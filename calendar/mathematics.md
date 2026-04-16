@@ -1,210 +1,331 @@
-<html lang="ru">
-<head>
-<meta charset="UTF-8">
-<title>Календарь Дарго: Математика — первый месяц года</title>
+---
+layout: default
+title: "Календарь Дарго: Математика — первый месяц года"
+---
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=JetBrains+Mono:wght@300;400&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --ink:      #1a1a2e;
+  --paper:    #f7f4ee;
+  --accent:   #8b1a1a;
+  --muted:    #9a8f7e;
+  --border:   #d4cfc6;
+  --week-bg:  #e8e2d8;
+  --day-bg:   #f0ece4;
+  --hover-bg: #8b1a1a;
+  --hover-fg: #f7f4ee;
+}
+
 body {
-    margin: 0;
-    background: #f2f2f2;
-    font-family: "Segoe UI", Arial, sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  min-height: 100vh;
 }
 
-.wrapper {
-    max-width: 1100px;
-    margin: 40px auto;
+/* ── навигация ── */
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 40px;
+  border-bottom: 1px solid var(--border);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
-/* Заголовок */
-.header {
-    font-size: 28px;
-    margin-bottom: 15px;
+.nav a {
+  color: var(--accent);
+  text-decoration: none;
 }
 
-/* Контейнер */
-.calendar {
-    display: flex;
-    background: white;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.08);
+.nav a:hover { text-decoration: underline; }
+
+.nav-center {
+  color: var(--muted);
 }
 
-/* Левая часть */
-.left {
-    width: 55%;
-    padding: 30px;
-    color: #ffffff;
-    line-height: 1.6;
-
-    background:
-        linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
-        url('https://images.unsplash.com/photo-1483664852095-d6cc6870702d?q=80&w=1200');
-    background-size: cover;
-    background-position: center;
+/* ── заголовок ── */
+.page-header {
+  padding: 32px 40px 24px;
+  border-bottom: 1px solid var(--border);
 }
 
-.text {
-    font-size: 15px;
+.month-number {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  color: var(--muted);
+  text-transform: uppercase;
+  margin-bottom: 6px;
 }
 
-/* Правая часть */
-.right {
-    width: 45%;
-    padding: 25px;
+.month-title {
+  font-size: 38px;
+  font-weight: 300;
+  letter-spacing: 0.02em;
+  line-height: 1;
 }
 
-/* Сетка */
+.month-subtitle {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--muted);
+  margin-top: 8px;
+  letter-spacing: 0.05em;
+}
+
+/* ── основной блок ── */
+.calendar-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: calc(100vh - 180px);
+}
+
+/* ── левая часть ── */
+.left-panel {
+  padding: 40px;
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.left-text {
+  font-size: 17px;
+  font-weight: 300;
+  line-height: 1.85;
+  color: var(--ink);
+  max-width: 480px;
+}
+
+.left-text p + p { margin-top: 1.2em; }
+
+.left-footer {
+  margin-top: 40px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--muted);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-top: 1px solid var(--border);
+  padding-top: 16px;
+}
+
+/* ── правая часть ── */
+.right-panel {
+  padding: 40px;
+}
+
+/* ── сетка ── */
 .grid {
-    display: grid;
-    grid-template-columns: 45px repeat(7, 1fr);
-    gap: 6px;
+  display: grid;
+  grid-template-columns: 38px repeat(7, 1fr);
+  gap: 4px;
 }
 
-/* дни недели */
-.day-name {
-    font-size: 11px;
-    text-align: center;
+/* заголовок дней */
+.day-header {
+  text-align: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  padding: 4px 0 10px;
+  text-transform: uppercase;
 }
 
-.day-name a {
-    text-decoration: none;
-    color: #555;
+.day-header a {
+  color: var(--muted);
+  text-decoration: none;
 }
 
-.day-name a:hover {
-    text-decoration: underline;
-}
+.day-header a:hover { color: var(--accent); }
 
 /* номер недели */
 .week-num {
-    font-size: 11px;
-    background: #e8e8e8;
-    border-radius: 6px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  background: var(--week-bg);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-/* дни */
+.week-num a {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--muted);
+  text-decoration: none;
+  letter-spacing: 0.05em;
+}
+
+.week-num a:hover { color: var(--accent); }
+
+/* ячейка дня */
 .day {
-    background: #fafafa;
-    border-radius: 6px;
-    text-align: center;
-    padding: 8px 0;
-    line-height: 1.2;
+  background: var(--day-bg);
+  border-radius: 4px;
+  text-align: center;
+  padding: 9px 2px 7px;
+  cursor: default;
+  transition: background 0.15s, color 0.15s;
 }
 
 .day:hover {
-    background: #1f3a4a;
-    color: white;
+  background: var(--hover-bg);
 }
 
-/* дробь */
-.top {
-    font-size: 22px;
-    display: block;
+.day:hover .d-new { color: var(--hover-fg); }
+.day:hover .d-old { color: rgba(247,244,238,0.55); }
+
+.d-new {
+  display: block;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.1;
+  color: var(--ink);
+  font-family: 'Cormorant Garamond', serif;
 }
 
-.bottom {
-    font-size: 11px;
-    color: #777;
+.d-old {
+  display: block;
+  font-size: 10px;
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--muted);
+  margin-top: 2px;
 }
 
-/* пустые */
-.empty {
-    background: transparent;
+.day.empty {
+  background: transparent;
+  pointer-events: none;
+}
+
+/* ── адаптив ── */
+@media (max-width: 800px) {
+  .calendar-body { grid-template-columns: 1fr; }
+  .left-panel { border-right: none; border-bottom: 1px solid var(--border); }
+  .nav { padding: 14px 20px; }
+  .page-header { padding: 24px 20px 18px; }
+  .left-panel, .right-panel { padding: 24px 20px; }
+  .month-title { font-size: 28px; }
+  .d-new { font-size: 16px; }
 }
 </style>
 
-</head>
+<div class="nav">
+  <a href="https://dargomag.github.io/calendar/">← Нулевой день</a>
+  <span class="nav-center">Календарь Дарго</span>
+  <a href="https://dargomag.github.io/calendar/physics.html">Физика →</a>
+</div>
 
-<body>
+<div class="page-header">
+  <div class="month-number">Месяц I</div>
+  <div class="month-title">Математика</div>
+  <div class="month-subtitle">22 декабря — 21 января · недели 1–5</div>
+</div>
 
-<div class="wrapper">
+<div class="calendar-body">
 
-<div class="header"> Календарь Дарго: Математика — первый месяц года</div>
-
-<div class="calendar">
-
-    <!-- Левая часть -->
-    <div class="left">
-        <div class="text">
-        Изначально слово «математика» на древнегреческом языке означало «изучение» или «наука». 
-        Оно исторически сложилось на основе измерения и описания природы — творений Бога. 
-        Современная математика не столько наука, сколько язык естественных наук, но широко 
-        используется в них как для точной формулировки их содержания, так и для получения 
-        новых результатов. Математика предоставляет язык другим наукам, тем самым выявляет 
-        их структурную взаимосвязь и способствует нахождению самых общих законов Вселенной — 
-        законов Бога.
-        </div>
+  <div class="left-panel">
+    <div class="left-text">
+      <p>Изначально слово «математика» на древнегреческом языке означало «изучение» или «наука».
+      Оно исторически сложилось на основе измерения и описания природы — творений Бога.</p>
+      <p>Современная математика не столько наука, сколько язык естественных наук, но широко
+      используется в них как для точной формулировки их содержания, так и для получения
+      новых результатов.</p>
+      <p>Математика предоставляет язык другим наукам, тем самым выявляет
+      их структурную взаимосвязь и способствует нахождению самых общих законов Вселенной —
+      законов Бога.</p>
     </div>
+    <div class="left-footer">I квартал · 31 день · Теосфера</div>
+  </div>
 
-    <!-- Правая часть -->
-    <div class="right">
-
-        <div class="grid">
-
-            <!-- заголовок -->
-            <div></div>
-            <div class="day-name"><a href="mon.html">ПН</a></div>
-            <div class="day-name"><a href="tue.html">ВТ</a></div>
-            <div class="day-name"><a href="wed.html">СР</a></div>
-            <div class="day-name"><a href="thu.html">ЧТ</a></div>
-            <div class="day-name"><a href="fri.html">ПТ</a></div>
-            <div class="day-name"><a href="sat.html">СБ</a></div>
-            <div class="day-name"><a href="sun.html">ВС</a></div>
-
-            <!-- неделя 1 -->
-            <div class="week-num">1</div>
-            <div class="day"><span class="top">1</span><span class="bottom">22</span></div>
-            <div class="day"><span class="top">2</span><span class="bottom">23</span></div>
-            <div class="day"><span class="top">3</span><span class="bottom">24</span></div>
-            <div class="day"><span class="top">4</span><span class="bottom">25</span></div>
-            <div class="day"><span class="top">5</span><span class="bottom">26</span></div>
-            <div class="day"><span class="top">6</span><span class="bottom">27</span></div>
-            <div class="day"><span class="top">7</span><span class="bottom">28</span></div>
-
-            <!-- неделя 2 -->
-            <div class="week-num">2</div>
-            <div class="day"><span class="top">8</span><span class="bottom">29</span></div>
-            <div class="day"><span class="top">9</span><span class="bottom">30</span></div>
-            <div class="day"><span class="top">10</span><span class="bottom">31</span></div>
-            <div class="day"><span class="top">11</span><span class="bottom">1</span></div>
-            <div class="day"><span class="top">12</span><span class="bottom">2</span></div>
-            <div class="day"><span class="top">13</span><span class="bottom">3</span></div>
-            <div class="day"><span class="top">14</span><span class="bottom">4</span></div>
-
-            <!-- неделя 3 -->
-            <div class="week-num">3</div>
-            <div class="day"><span class="top">15</span><span class="bottom">5</span></div>
-            <div class="day"><span class="top">16</span><span class="bottom">6</span></div>
-            <div class="day"><span class="top">17</span><span class="bottom">7</span></div>
-            <div class="day"><span class="top">18</span><span class="bottom">8</span></div>
-            <div class="day"><span class="top">19</span><span class="bottom">9</span></div>
-            <div class="day"><span class="top">20</span><span class="bottom">10</span></div>
-            <div class="day"><span class="top">21</span><span class="bottom">11</span></div>
-
-            <!-- неделя 4 -->
-            <div class="week-num">4</div>
-            <div class="day"><span class="top">22</span><span class="bottom">12</span></div>
-            <div class="day"><span class="top">23</span><span class="bottom">13</span></div>
-            <div class="day"><span class="top">24</span><span class="bottom">14</span></div>
-            <div class="day"><span class="top">25</span><span class="bottom">15</span></div>
-            <div class="day"><span class="top">26</span><span class="bottom">16</span></div>
-            <div class="day"><span class="top">27</span><span class="bottom">17</span></div>
-            <div class="day"><span class="top">28</span><span class="bottom">18</span></div>
-
-            <!-- неделя 5 -->
-            <div class="week-num">5</div>
-            <div class="day"><span class="top">29</span><span class="bottom">19</span></div>
-            <div class="day"><span class="top">30</span><span class="bottom">20</span></div>
-            <div class="day"><span class="top">31</span><span class="bottom">21</span></div>
-            <div class="empty"></div><div class="empty"></div><div class="empty"></div><div class="empty"></div>
-
-        </div>
-
-    </div>
+  <div class="right-panel">
+    <div class="grid" id="cal-grid"></div>
+  </div>
 
 </div>
+
+<script>
+(function () {
+  // ── параметры месяца ──────────────────────────────────────────
+  var DAYS_IN_MONTH = 31;        // дней в месяце Дарго
+  var WEEK_START    = 1;         // номер первой недели этого месяца
+  var GREG_START_D  = 22;        // григорианский день начала
+  var GREG_START_M  = 12;        // григорианский месяц начала (12 = декабрь)
+  var GREG_START_Y  = 2025;      // год
+  // ─────────────────────────────────────────────────────────────
+
+  var MONTH_NAMES_RU = ['янв','фев','мар','апр','май','июн','июл','авг','сен','окт','ноя','дек'];
+  var DAY_NAMES = ['ПН','ВТ','СР','ЧТ','ПТ','СБ','ВС'];
+  var DAY_LINKS = ['mon','tue','wed','thu','fri','sat','sun'];
+  var BASE = 'https://dargomag.github.io';
+
+  // Вычислить григорианскую дату для дня Дарго dayIndex (0-based)
+  function gregDate(dayIndex) {
+    var d = new Date(GREG_START_Y, GREG_START_M - 1, GREG_START_D + dayIndex);
+    return { d: d.getDate(), m: d.getMonth() }; // m: 0-based
+  }
+
+  var grid = document.getElementById('cal-grid');
+
+  // строка-заголовок: пустая ячейка + дни недели
+  var empty = document.createElement('div');
+  grid.appendChild(empty);
+
+  DAY_NAMES.forEach(function (name, i) {
+    var cell = document.createElement('div');
+    cell.className = 'day-header';
+    var a = document.createElement('a');
+    a.href = BASE + '/calendar/' + DAY_LINKS[i] + '.html';
+    a.textContent = name;
+    cell.appendChild(a);
+    grid.appendChild(cell);
+  });
+
+  // строки с днями
+  var dayIndex = 0;
+  for (var row = 0; row < 5; row++) {
+    var weekNum = WEEK_START + row;
+
+    // ячейка номера недели
+    var wCell = document.createElement('div');
+    wCell.className = 'week-num';
+    var wLink = document.createElement('a');
+    wLink.href = BASE + '/path-dargo/' + String(weekNum).padStart(2,'0') + '.html';
+    wLink.textContent = weekNum;
+    wCell.appendChild(wLink);
+    grid.appendChild(wCell);
+
+    // 7 дней
+    for (var col = 0; col < 7; col++) {
+      var cell = document.createElement('div');
+      if (dayIndex < DAYS_IN_MONTH) {
+        cell.className = 'day';
+        var g = gregDate(dayIndex);
+        var spanNew = document.createElement('span');
+        spanNew.className = 'd-new';
+        spanNew.textContent = dayIndex + 1;
+        var spanOld = document.createElement('span');
+        spanOld.className = 'd-old';
+        spanOld.textContent = g.d + ' ' + MONTH_NAMES_RU[g.m];
+        cell.appendChild(spanNew);
+        cell.appendChild(spanOld);
+        dayIndex++;
+      } else {
+        cell.className = 'day empty';
+      }
+      grid.appendChild(cell);
+    }
+  }
+})();
+</script>
 
 </div>
 
