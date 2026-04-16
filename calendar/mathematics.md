@@ -1,118 +1,104 @@
-Математика - первый месяц года
-
-Изначально слово «математика» на древнегреческом языке означало «изучение» или «наука». Оно исторически сложилось на основе измерения и описания природы - творений Бога. 
-Современная математика не столько наука, сколько язык естественных наук, но широко используется в них как для точной формулировки их содержания, так и для получения новых результатов. Математика предоставляет язык другим наукам, тем самым выявляет их структурную взаимосвязь и способствует нахождению самых общих законов Вселенной – законов Бога.
-
-
+<!DOCTYPE html>
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<title>Математика</title>
+<title>Математика — первый месяц года</title>
 
 <style>
 body {
     margin: 0;
-    background: #f2f2f2;
-    font-family: "Segoe UI", Arial, sans-serif;
+    font-family: "Georgia", serif;
+    background: linear-gradient(to bottom, #e9f2f7, #ffffff);
 }
 
-.calendar {
-    display: flex;
-    max-width: 1100px;
-    margin: 60px auto;
-    background: #ffffff;
+.container {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 30px;
+    background: rgba(255,255,255,0.9);
     box-shadow: 0 20px 50px rgba(0,0,0,0.08);
 }
 
-/* Левая часть */
-.left {
-    width: 55%;
-    background: #0e1a22;
-    color: rgba(255,255,255,0.08);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.math-pattern {
-    font-size: 42px;
-    line-height: 1.8;
+/* Заголовок */
+.title {
+    font-size: 32px;
     text-align: center;
+    margin-bottom: 10px;
 }
 
-/* Правая часть */
-.right {
-    width: 45%;
-    padding: 30px 25px;
-}
-
-/* Заголовки */
-.month-title {
-    font-size: 30px;
-    letter-spacing: 1px;
-    margin-bottom: 5px;
-}
-
-.date-range {
+.subtitle {
+    text-align: center;
     font-size: 13px;
-    color: #777;
+    color: #666;
     margin-bottom: 25px;
+}
+
+/* Текст */
+.text {
+    font-size: 15px;
+    line-height: 1.7;
+    color: #333;
+    margin-bottom: 35px;
 }
 
 /* Сетка */
 .grid {
     display: grid;
-    grid-template-columns: 45px repeat(7, 1fr);
+    grid-template-columns: 50px repeat(7, 1fr);
     gap: 6px;
 }
 
 /* дни недели */
-.day-name {
-    font-size: 11px;
+.day-name a {
+    text-decoration: none;
+    color: #444;
+    font-size: 12px;
+    display: block;
     text-align: center;
-    color: #888;
-    letter-spacing: 1px;
 }
 
-/* номер недели */
+.day-name a:hover {
+    text-decoration: underline;
+}
+
+/* недели */
 .week-num {
     font-size: 11px;
-    background: #e8e8e8;
-    border-radius: 6px;
+    background: #eaeaea;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #555;
+    border-radius: 5px;
 }
 
 /* дни */
 .day {
-    text-align: center;
-    padding: 14px 0;
-    font-size: 22px; /* увеличено примерно вдвое */
     background: #fafafa;
     border-radius: 6px;
-    transition: 0.2s;
+    padding: 10px 0;
+    text-align: center;
 }
 
-.day:hover {
-    background: #1f3a4a;
-    color: white;
+/* дробь */
+.frac {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 18px;
+}
+
+.top {
+    font-weight: bold;
+}
+
+.bottom {
+    font-size: 11px;
+    color: #777;
 }
 
 /* пустые */
 .empty {
     background: transparent;
-}
-
-/* адаптив */
-@media (max-width: 800px) {
-    .calendar {
-        flex-direction: column;
-    }
-    .left, .right {
-        width: 100%;
-    }
 }
 </style>
 
@@ -120,58 +106,78 @@ body {
 
 <body>
 
-<div class="calendar">
+<div class="container">
 
-    <!-- Левая часть -->
-    <div class="left">
-        <div class="math-pattern">
-            ∑<br>
-            ∫<br>
-            π<br>
-            e^{iπ}+1=0
-        </div>
+    <div class="title">Математика — первый месяц года</div>
+    <div class="subtitle">(22 декабря — 21 января по григорианскому стилю)</div>
+
+    <div class="text">
+    Изначально слово «математика» на древнегреческом языке означало «изучение» или «наука». 
+    Оно исторически сложилось на основе измерения и описания природы — творений Бога. 
+    Современная математика не столько наука, сколько язык естественных наук, но широко используется 
+    в них как для точной формулировки их содержания, так и для получения новых результатов. 
+    Математика предоставляет язык другим наукам, тем самым выявляет их структурную взаимосвязь 
+    и способствует нахождению самых общих законов Вселенной — законов Бога.
     </div>
 
-    <!-- Правая часть -->
-    <div class="right">
+    <div class="grid">
 
-        <div class="month-title">Математика</div>
-        <div class="date-range">(22 декабря — 21 января по григорианскому стилю)</div>
+        <!-- заголовок -->
+        <div></div>
+        <div class="day-name"><a href="mon.html">ПН</a></div>
+        <div class="day-name"><a href="tue.html">ВТ</a></div>
+        <div class="day-name"><a href="wed.html">СР</a></div>
+        <div class="day-name"><a href="thu.html">ЧТ</a></div>
+        <div class="day-name"><a href="fri.html">ПТ</a></div>
+        <div class="day-name"><a href="sat.html">СБ</a></div>
+        <div class="day-name"><a href="sun.html">ВС</a></div>
 
-        <div class="grid">
+        <!-- неделя 1 -->
+        <div class="week-num">1</div>
+        <div class="day"><div class="frac"><div class="top">1</div><div class="bottom">22</div></div></div>
+        <div class="day"><div class="frac"><div class="top">2</div><div class="bottom">23</div></div></div>
+        <div class="day"><div class="frac"><div class="top">3</div><div class="bottom">24</div></div></div>
+        <div class="day"><div class="frac"><div class="top">4</div><div class="bottom">25</div></div></div>
+        <div class="day"><div class="frac"><div class="top">5</div><div class="bottom">26</div></div></div>
+        <div class="day"><div class="frac"><div class="top">6</div><div class="bottom">27</div></div></div>
+        <div class="day"><div class="frac"><div class="top">7</div><div class="bottom">28</div></div></div>
 
-            <!-- заголовок -->
-            <div></div>
-            <div class="day-name">ПН</div>
-            <div class="day-name">ВТ</div>
-            <div class="day-name">СР</div>
-            <div class="day-name">ЧТ</div>
-            <div class="day-name">ПТ</div>
-            <div class="day-name">СБ</div>
-            <div class="day-name">ВС</div>
+        <!-- неделя 2 -->
+        <div class="week-num">2</div>
+        <div class="day"><div class="frac"><div class="top">8</div><div class="bottom">29</div></div></div>
+        <div class="day"><div class="frac"><div class="top">9</div><div class="bottom">30</div></div></div>
+        <div class="day"><div class="frac"><div class="top">10</div><div class="bottom">31</div></div></div>
+        <div class="day"><div class="frac"><div class="top">11</div><div class="bottom">1</div></div></div>
+        <div class="day"><div class="frac"><div class="top">12</div><div class="bottom">2</div></div></div>
+        <div class="day"><div class="frac"><div class="top">13</div><div class="bottom">3</div></div></div>
+        <div class="day"><div class="frac"><div class="top">14</div><div class="bottom">4</div></div></div>
 
-            <!-- неделя 1 -->
-            <div class="week-num">1</div>
-            <div class="day">1</div><div class="day">2</div><div class="day">3</div><div class="day">4</div><div class="day">5</div><div class="day">6</div><div class="day">7</div>
+        <!-- неделя 3 -->
+        <div class="week-num">3</div>
+        <div class="day"><div class="frac"><div class="top">15</div><div class="bottom">5</div></div></div>
+        <div class="day"><div class="frac"><div class="top">16</div><div class="bottom">6</div></div></div>
+        <div class="day"><div class="frac"><div class="top">17</div><div class="bottom">7</div></div></div>
+        <div class="day"><div class="frac"><div class="top">18</div><div class="bottom">8</div></div></div>
+        <div class="day"><div class="frac"><div class="top">19</div><div class="bottom">9</div></div></div>
+        <div class="day"><div class="frac"><div class="top">20</div><div class="bottom">10</div></div></div>
+        <div class="day"><div class="frac"><div class="top">21</div><div class="bottom">11</div></div></div>
 
-            <!-- неделя 2 -->
-            <div class="week-num">2</div>
-            <div class="day">8</div><div class="day">9</div><div class="day">10</div><div class="day">11</div><div class="day">12</div><div class="day">13</div><div class="day">14</div>
+        <!-- неделя 4 -->
+        <div class="week-num">4</div>
+        <div class="day"><div class="frac"><div class="top">22</div><div class="bottom">12</div></div></div>
+        <div class="day"><div class="frac"><div class="top">23</div><div class="bottom">13</div></div></div>
+        <div class="day"><div class="frac"><div class="top">24</div><div class="bottom">14</div></div></div>
+        <div class="day"><div class="frac"><div class="top">25</div><div class="bottom">15</div></div></div>
+        <div class="day"><div class="frac"><div class="top">26</div><div class="bottom">16</div></div></div>
+        <div class="day"><div class="frac"><div class="top">27</div><div class="bottom">17</div></div></div>
+        <div class="day"><div class="frac"><div class="top">28</div><div class="bottom">18</div></div></div>
 
-            <!-- неделя 3 -->
-            <div class="week-num">3</div>
-            <div class="day">15</div><div class="day">16</div><div class="day">17</div><div class="day">18</div><div class="day">19</div><div class="day">20</div><div class="day">21</div>
-
-            <!-- неделя 4 -->
-            <div class="week-num">4</div>
-            <div class="day">22</div><div class="day">23</div><div class="day">24</div><div class="day">25</div><div class="day">26</div><div class="day">27</div><div class="day">28</div>
-
-            <!-- неделя 5 -->
-            <div class="week-num">5</div>
-            <div class="day">29</div><div class="day">30</div><div class="day">31</div>
-            <div class="empty"></div><div class="empty"></div><div class="empty"></div><div class="empty"></div>
-
-        </div>
+        <!-- неделя 5 -->
+        <div class="week-num">5</div>
+        <div class="day"><div class="frac"><div class="top">29</div><div class="bottom">19</div></div></div>
+        <div class="day"><div class="frac"><div class="top">30</div><div class="bottom">20</div></div></div>
+        <div class="day"><div class="frac"><div class="top">31</div><div class="bottom">21</div></div></div>
+        <div class="empty"></div><div class="empty"></div><div class="empty"></div><div class="empty"></div>
 
     </div>
 
