@@ -54,7 +54,7 @@ body {
 }
 
 .calendar-title {
-  font-size: 52px;
+  font-size: 40px;
   font-weight: 800;
   line-height: 1;
   color: var(--ink);
