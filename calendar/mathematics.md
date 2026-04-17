@@ -4,26 +4,23 @@ title: "Математика — первый месяц календаря Да
 ---
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=JetBrains+Mono:wght@300;400&display=swap');
-
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --ink:      #1a1a2e;
-  --paper:    #f7f4ee;
-  --accent:   #8b1a1a;
-  --muted:    #444444;
-  --border:   #b0a898;
-  --week-bg:  #ddd8ce;
-  --day-bg:   #ece8e0;
-  --hover-bg: #8b1a1a;
-  --hover-fg: #f7f4ee;
+  --ink:      #000000;
+  --paper:    #ffffff;
+  --accent:   #0969da;
+  --border:   #000000;
+  --week-bg:  #ddf4ff;
+  --day-bg:   #f6f8fa;
+  --hover-bg: #0969da;
+  --hover-fg: #ffffff;
 }
 
 body {
   background: var(--paper);
   color: var(--ink);
-  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
   min-height: 100vh;
 }
 
@@ -32,25 +29,22 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 18px 40px;
+  padding: 16px 40px;
   border-bottom: 1px solid var(--border);
-  font-family: 'JetBrains Mono', monospace;
   font-size: 14px;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
 }
 
 .nav a {
   color: var(--accent);
   text-decoration: none;
-  font-weight: 400;
+  font-weight: 600;
 }
 
 .nav a:hover { text-decoration: underline; }
 
 .nav-center {
   color: var(--ink);
-  font-weight: 400;
+  font-weight: 600;
 }
 
 /* ── заголовок ── */
@@ -60,37 +54,33 @@ body {
 }
 
 .calendar-title {
-  font-family: 'Cormorant Garamond', serif;
   font-size: 52px;
-  font-weight: 700;
-  letter-spacing: 0.04em;
+  font-weight: 800;
   line-height: 1;
   color: var(--ink);
   text-transform: uppercase;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
 }
 
 .month-title {
-  font-size: 28px;
-  font-weight: 400;
-  letter-spacing: 0.02em;
+  font-size: 26px;
+  font-weight: 600;
   line-height: 1.2;
   color: var(--ink);
 }
 
 .month-subtitle {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 15px;
+  font-size: 16px;
+  font-weight: 400;
   color: var(--ink);
-  margin-top: 6px;
-  letter-spacing: 0.03em;
+  margin-top: 4px;
 }
 
 /* ── основной блок ── */
 .calendar-body {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  min-height: calc(100vh - 180px);
+  min-height: calc(100vh - 200px);
 }
 
 /* ── левая часть ── */
@@ -105,19 +95,17 @@ body {
 .left-text {
   font-size: 17px;
   font-weight: 400;
-  line-height: 1.85;
+  line-height: 1.8;
   color: var(--ink);
-  max-width: 480px;
 }
 
 .left-text p + p { margin-top: 1.2em; }
 
 .left-footer {
   margin-top: 40px;
-  font-family: 'JetBrains Mono', monospace;
   font-size: 13px;
+  font-weight: 600;
   color: var(--ink);
-  letter-spacing: 0.05em;
   text-transform: uppercase;
   border-top: 1px solid var(--border);
   padding-top: 16px;
@@ -138,9 +126,8 @@ body {
 /* заголовок дней */
 .day-header {
   text-align: center;
-  font-family: 'JetBrains Mono', monospace;
   font-size: 13px;
-  letter-spacing: 0.08em;
+  font-weight: 600;
   color: var(--ink);
   padding: 4px 0 10px;
   text-transform: uppercase;
@@ -157,16 +144,15 @@ body {
 .week-num {
   background: var(--week-bg);
   border-radius: 4px;
+  border: 1px solid var(--border);
   display: flex;
   align-items: center;
   justify-content: center;
-  min-width: 52px;
 }
 
 .week-num a {
-  font-family: 'JetBrains Mono', monospace;
   font-size: 20px;
-  font-weight: 400;
+  font-weight: 700;
   color: var(--ink);
   text-decoration: none;
 }
@@ -177,38 +163,36 @@ body {
 .day {
   background: var(--day-bg);
   border-radius: 4px;
+  border: 1px solid var(--border);
   text-align: center;
   padding: 9px 2px 7px;
   cursor: default;
-  transition: background 0.15s, color 0.15s;
+  transition: background 0.15s;
 }
 
-.day:hover {
-  background: var(--hover-bg);
-}
-
+.day:hover { background: var(--hover-bg); }
 .day:hover .d-new { color: var(--hover-fg); }
-.day:hover .d-old { color: rgba(247,244,238,0.55); }
+.day:hover .d-old { color: var(--hover-fg); }
 
 .d-new {
   display: block;
   font-size: 20px;
-  font-weight: 400;
+  font-weight: 700;
   line-height: 1.1;
   color: var(--ink);
-  font-family: 'Cormorant Garamond', serif;
 }
 
 .d-old {
   display: block;
   font-size: 11px;
-  font-family: 'JetBrains Mono', monospace;
-  color: var(--muted);
+  font-weight: 400;
+  color: var(--ink);
   margin-top: 2px;
 }
 
 .day.empty {
   background: transparent;
+  border: none;
   pointer-events: none;
 }
 
@@ -219,7 +203,8 @@ body {
   .nav { padding: 14px 20px; }
   .page-header { padding: 24px 20px 18px; }
   .left-panel, .right-panel { padding: 24px 20px; }
-  .month-title { font-size: 28px; }
+  .calendar-title { font-size: 34px; }
+  .month-title { font-size: 20px; }
   .d-new { font-size: 16px; }
 }
 </style>
@@ -249,7 +234,7 @@ body {
       их структурную взаимосвязь и способствует нахождению самых общих законов Вселенной —
       законов Бога.</p>
     </div>
-    <div class="left-footer">I квартал · 31 день · Теосфера</div>
+    <div class="left-footer">I квартал · 31 день</div>
   </div>
 
   <div class="right-panel">
@@ -260,30 +245,37 @@ body {
 
 <script>
 (function () {
-  // ── параметры месяца ──────────────────────────────────────────
-  var DAYS_IN_MONTH = 31;        // дней в месяце Дарго
-  var WEEK_START    = 1;         // номер первой недели этого месяца
-  var GREG_START_D  = 22;        // григорианский день начала
-  var GREG_START_M  = 12;        // григорианский месяц начала (12 = декабрь)
-  var GREG_START_Y  = 2025;      // год
+  // ── параметры месяца ─────────────────────────────────────────
+  var DAYS_IN_MONTH = 31;
+  var WEEK_START    = 1;
+  var GREG_START_D  = 22;
+  var GREG_START_M  = 12;
+  var GREG_START_Y  = 2025;
   // ─────────────────────────────────────────────────────────────
+
+  // Названия глав Путь Дарго по номеру недели
+  var WEEK_TITLES = {
+    1: 'Гунны',
+    2: 'Голос',
+    3: 'Бог и Вселенная',
+    4: 'Божья воля',
+    5: 'Добро и зло'
+  };
 
   var MONTH_NAMES_RU = ['янв','фев','мар','апр','май','июн','июл','авг','сен','окт','ноя','дек'];
   var DAY_NAMES = ['ПН','ВТ','СР','ЧТ','ПТ','СБ','ВС'];
   var DAY_LINKS = ['mon','tue','wed','thu','fri','sat','sun'];
   var BASE = 'https://dargomag.github.io';
 
-  // Вычислить григорианскую дату для дня Дарго dayIndex (0-based)
   function gregDate(dayIndex) {
     var d = new Date(GREG_START_Y, GREG_START_M - 1, GREG_START_D + dayIndex);
-    return { d: d.getDate(), m: d.getMonth() }; // m: 0-based
+    return { d: d.getDate(), m: d.getMonth() };
   }
 
   var grid = document.getElementById('cal-grid');
 
-  // строка-заголовок: пустая ячейка + дни недели
-  var empty = document.createElement('div');
-  grid.appendChild(empty);
+  // строка-заголовок
+  grid.appendChild(document.createElement('div'));
 
   DAY_NAMES.forEach(function (name, i) {
     var cell = document.createElement('div');
@@ -299,17 +291,19 @@ body {
   var dayIndex = 0;
   for (var row = 0; row < 5; row++) {
     var weekNum = WEEK_START + row;
+    var weekPad = String(weekNum).padStart(2, '0');
 
-    // ячейка номера недели
     var wCell = document.createElement('div');
     wCell.className = 'week-num';
     var wLink = document.createElement('a');
-    wLink.href = BASE + '/path-dargo/' + String(weekNum).padStart(2,'0') + '.html';
+    wLink.href = BASE + '/path-dargo/' + weekPad + '.html';
     wLink.textContent = weekNum;
+    if (WEEK_TITLES[weekNum]) {
+      wLink.title = WEEK_TITLES[weekNum];
+    }
     wCell.appendChild(wLink);
     grid.appendChild(wCell);
 
-    // 7 дней
     for (var col = 0; col < 7; col++) {
       var cell = document.createElement('div');
       if (dayIndex < DAYS_IN_MONTH) {
