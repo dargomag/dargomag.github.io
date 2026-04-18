@@ -211,7 +211,7 @@ body {
 
 <div class="nav">
   <a href="https://dargomag.github.io/calendar/">← Нулевой день</a>
-  <span class="nav-center">Календарь Дарго</span>
+ <span class="nav-center"><a href="https://dargomag.github.io/calendar/">Календарь Дарго</a></span>
   <a href="https://dargomag.github.io/calendar/physics.html">Физика →</a>
 </div>
 
