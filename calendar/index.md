@@ -64,7 +64,7 @@ title: Календарь
 
 /* Ширины полей */
 .conv-field-group.f-day   { width: 50px; }
-.conv-field-group.f-month { width: 100px; }
+.conv-field-group.f-month { width: 120px; }
 .conv-field-group.f-year  { width: 60px; }
 .conv-field-group.f-era   { width: 60px; }
 
