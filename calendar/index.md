@@ -63,10 +63,10 @@ title: Календарь
 }
 
 /* Ширины полей */
-.conv-field-group.f-day   { width: 52px; }
-.conv-field-group.f-month { width: 160px; }
-.conv-field-group.f-year  { width: 72px; }
-.conv-field-group.f-era   { width: 84px; }
+.conv-field-group.f-day   { width: 50px; }
+.conv-field-group.f-month { width: 80px; }
+.conv-field-group.f-year  { width: 60px; }
+.conv-field-group.f-era   { width: 60px; }
 
 .conv-fields input,
 .conv-fields select {
@@ -204,7 +204,7 @@ input[disabled], select[disabled] {
 
     <!-- Кнопка -->
     <div class="conv-btn-wrap">
-      <button class="conv-btn" onclick="convertDate()">Конвер&shy;тировать</button>
+      <button class="conv-btn" onclick="convertDate()">Конвертировать</button>
     </div>
 
     <!-- КД -->
