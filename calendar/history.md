@@ -221,7 +221,7 @@ body {
   // ── параметры месяца ─────────────────────────────────────────
   var DAYS_IN_MONTH = 31;
   var WEEK_START    = 27;
-  var START_DOW     = 5;   // 0=ПН,1=ВТ,2=СР,3=ЧТ,4=ПТ,5=СБ,6=ВС
+  var START_DOW     = 0;   // 0=ПН — начинается с понедельника
   var GREG_START_D  = 22;
   var GREG_START_M  = 6;   // июнь
   var GREG_START_Y  = 2026;
