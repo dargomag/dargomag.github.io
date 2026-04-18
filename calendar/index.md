@@ -254,6 +254,7 @@ input[disabled], select[disabled] {
       <span class="conv-result-label">Григорианский календарь</span>
       <span class="conv-result-value" id="res-gk">—</span>
     </div>
+   <div style="font-size:24px; font-weight:700; align-self:center;">=</div> 
     <div>
       <span class="conv-result-label">Календарь Дарго</span>
       <span class="conv-result-value" id="res-kd">—</span>
