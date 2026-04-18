@@ -1,7 +1,6 @@
 ---
 title: Календарь
 ---
-
 <!-- ══════════════════════════════════════════════
      КОНВЕРТЕР ДАТ — вставить в начало index.md
      ══════════════════════════════════════════════ -->
@@ -41,7 +40,6 @@ title: Календарь
   margin-bottom: 8px;
 }
 
-/* Поля в строку, каждое — своей ширины */
 .conv-fields {
   display: flex;
   flex-wrap: wrap;
@@ -62,8 +60,7 @@ title: Календарь
   letter-spacing: 0.05em;
 }
 
-/* Ширины полей */
-.conv-field-group.f-day   { width: 50px; }
+.conv-field-group.f-day   { width: 52px; }
 .conv-field-group.f-month { width: 120px; }
 .conv-field-group.f-year  { width: 60px; }
 .conv-field-group.f-era   { width: 60px; }
@@ -90,8 +87,8 @@ title: Календарь
 }
 
 input[disabled], select[disabled] {
-  background: #e8e8e8;
-  color: #888;
+  background: #e8e8e8 !important;
+  color: #888 !important;
 }
 
 /* Кнопка */
@@ -121,15 +118,21 @@ input[disabled], select[disabled] {
 /* Результат */
 .conv-result {
   margin-top: 16px;
-  padding: 14px 16px;
+  padding: 14px 20px;
   border: 1px solid #000;
   background: #fff;
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 48px;
+  gap: 16px;
   min-height: 52px;
   text-align: center;
+}
+
+.conv-result-item {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
 }
 
 .conv-result-label {
@@ -138,15 +141,20 @@ input[disabled], select[disabled] {
   text-transform: uppercase;
   letter-spacing: 0.06em;
   color: #555;
-  display: block;
-  margin-bottom: 4px;
 }
 
 .conv-result-value {
   font-size: 16px;
   font-weight: 700;
   color: #000;
-  display: block;
+}
+
+.conv-equals {
+  font-size: 24px;
+  font-weight: 300;
+  color: #000;
+  line-height: 1;
+  padding-top: 12px;
 }
 
 .conv-hint {
@@ -249,13 +257,13 @@ input[disabled], select[disabled] {
 
   <div class="conv-hint" id="conv-hint"></div>
 
-  <div class="conv-result" id="conv-result">
-    <div>
+  <div class="conv-result">
+    <div class="conv-result-item">
       <span class="conv-result-label">Григорианский календарь</span>
       <span class="conv-result-value" id="res-gk">—</span>
     </div>
-   <div style="font-size:24px; font-weight:700; align-self:center;">=</div> 
-    <div>
+    <div class="conv-equals">=</div>
+    <div class="conv-result-item">
       <span class="conv-result-label">Календарь Дарго</span>
       <span class="conv-result-value" id="res-kd">—</span>
     </div>
@@ -265,8 +273,6 @@ input[disabled], select[disabled] {
 <script>
 (function () {
 
-  // ── Данные месяцев КД ────────────────────────────────────────
-  // [название, дней, смещение от 1 Математики в днях (0-based)]
   var KD_MONTHS = [
     null,
     ['Математика',   31,   0],
@@ -285,39 +291,30 @@ input[disabled], select[disabled] {
 
   var GK_MONTHS_RU = ['января','февраля','марта','апреля','мая','июня',
                        'июля','августа','сентября','октября','ноября','декабря'];
+  var GK_MONTHS_DAYS = [31,28,31,30,31,30,31,31,30,31,30,31];
 
   // Опорная точка: Нулевой день 12 026 КД = 21 декабря 2025 ГК
-  // (год КД 12026 начинается Нулевым днём 21 дек 2025)
-  var ANCHOR_GK_MS   = Date.UTC(2025, 11, 21); // 21 декабря 2025
+  var ANCHOR_MS      = Date.UTC(2025, 11, 21);
   var ANCHOR_KD_YEAR = 12026;
-
-  // ── Вспомогательные функции ──────────────────────────────────
 
   function isLeapGK(y) {
     return (y % 4 === 0 && y % 100 !== 0) || (y % 400 === 0);
   }
 
-  // Год КД является високосным если внутри него есть 29 февраля ГК.
-  // Год КД Y начинается 21 дек (Y-10025 год ГК) и охватывает февраль (Y-10024 год ГК).
-  // Пример: 12026 КД начинается 21 дек 2025 ГК, февраль внутри — 2026 ГК.
-  // 12026 - 10000 = 2026 ✓
-  function isLeapKD(kdY) {
-    var gkFebYear = kdY - 10000;
-    return isLeapGK(gkFebYear);
+  // Год КД Y високосный если внутри него есть 29 февраля ГК
+  // Год КД Y охватывает февраль григорианского года Y-10000
+  function isLeapKD(y) {
+    return isLeapGK(y - 10000);
   }
 
-  // Длина года КД в днях
-  function kdYearLen(kdY) {
-    return isLeapKD(kdY) ? 366 : 365;
+  function kdYearLen(y) {
+    return isLeapKD(y) ? 366 : 365;
   }
 
-  // Дата ГК (Date объект, UTC) → смещение в днях от опорной точки
   function gkToDays(utcMs) {
-    return Math.round((utcMs - ANCHOR_GK_MS) / 86400000);
+    return Math.round((utcMs - ANCHOR_MS) / 86400000);
   }
 
-  // Смещение в днях → объект даты КД
-  // день 0 = Нулевой день 12026 КД
   function daysToKD(totalDays) {
     var kdYear = ANCHOR_KD_YEAR;
     var d = totalDays;
@@ -336,15 +333,13 @@ input[disabled], select[disabled] {
       }
     }
 
-    // d — день внутри года КД (0 = Нулевой день, 1..364/365 = месяцы, последний = День радости если високосный)
-    var leap  = isLeapKD(kdYear);
-    var ylen  = kdYearLen(kdYear);
+    var leap = isLeapKD(kdYear);
+    var ylen = kdYearLen(kdYear);
 
     if (d === 0) return { type: 'zero', year: kdYear };
     if (leap && d === ylen - 1) return { type: 'joy', year: kdYear };
 
-    // d=1..364 → месяцы
-    var dayInMonths = d; // 1-based
+    var dayInMonths = d;
     for (var m = 1; m <= 12; m++) {
       var mlen = KD_MONTHS[m][1];
       if (dayInMonths <= mlen) {
@@ -355,38 +350,32 @@ input[disabled], select[disabled] {
     return null;
   }
 
-  // Объект даты КД → смещение в днях от опорной точки
   function kdToDays(kdYear, monthVal, day) {
-    // Количество дней от опорной точки до Нулевого дня kdYear
     var days = 0;
     if (kdYear >= ANCHOR_KD_YEAR) {
       for (var y = ANCHOR_KD_YEAR; y < kdYear; y++) days += kdYearLen(y);
     } else {
       for (var y = kdYear; y < ANCHOR_KD_YEAR; y++) days -= kdYearLen(y);
     }
-    // days = смещение Нулевого дня kdYear
     if (monthVal === '0')  return days;
     if (monthVal === '0r') return days + kdYearLen(kdYear) - 1;
     var m = parseInt(monthVal);
     return days + 1 + KD_MONTHS[m][2] + (day - 1);
   }
 
-  // Форматирование даты ГК
   function formatGK(utcMs) {
-    var d = new Date(utcMs);
-    var day  = d.getUTCDate();
-    var mon  = d.getUTCMonth();
-    var year = d.getUTCFullYear();
-    return day + ' ' + GK_MONTHS_RU[mon] + ' ' + year + ' н.э. ГК';
+    var d   = new Date(utcMs);
+    var day = d.getUTCDate();
+    var mon = d.getUTCMonth();
+    var yr  = d.getUTCFullYear();
+    return day + ' ' + GK_MONTHS_RU[mon] + ' ' + yr + ' н.э. ГК';
   }
 
-  // Год КД с пробелом-разделителем тысяч
   function fmtYear(y) {
     var s = String(y);
     return s.length > 3 ? s.slice(0, -3) + '\u00a0' + s.slice(-3) : s;
   }
 
-  // Форматирование даты КД
   function formatKD(kd) {
     if (!kd) return '—';
     var yr = fmtYear(kd.year);
@@ -395,15 +384,54 @@ input[disabled], select[disabled] {
     return kd.day + ' ' + KD_MONTHS[kd.month][0] + ' ' + yr + ' КД';
   }
 
-  // Показать результат
-  function showResult(gkMs, kd) {
-    document.getElementById('res-gk').textContent = formatGK(gkMs);
+  // Заполнить поля ГК из utcMs
+  function fillGKFields(utcMs) {
+    var d = new Date(utcMs);
+    document.getElementById('gk-day').value   = d.getUTCDate();
+    document.getElementById('gk-month').value = d.getUTCMonth() + 1;
+    document.getElementById('gk-year').value  = d.getUTCFullYear();
+    document.getElementById('gk-era').value   = 'ce';
+  }
+
+  // Заполнить поля КД из объекта kd
+  function fillKDFields(kd) {
+    if (!kd) return;
+    var dayField = document.getElementById('kd-day');
+    if (kd.type === 'zero') {
+      document.getElementById('kd-month').value = '0';
+      dayField.value    = 0;
+      dayField.disabled = true;
+    } else if (kd.type === 'joy') {
+      document.getElementById('kd-month').value = '0r';
+      dayField.value    = 0;
+      dayField.disabled = true;
+    } else {
+      document.getElementById('kd-month').value = kd.month;
+      dayField.value    = kd.day;
+      dayField.disabled = false;
+    }
+    document.getElementById('kd-year').value = kd.year;
+  }
+
+  function showResult(utcMs, kd) {
+    document.getElementById('res-gk').textContent = formatGK(utcMs);
     document.getElementById('res-kd').textContent = formatKD(kd);
   }
 
-  // ── Блокировка поля числа ────────────────────────────────────
+  // Инициализация
+  function initToday() {
+    var now   = new Date();
+    var utcMs = Date.UTC(now.getFullYear(), now.getMonth(), now.getDate());
+    var days  = gkToDays(utcMs);
+    var kd    = daysToKD(days);
+    fillGKFields(utcMs);
+    fillKDFields(kd);
+    showResult(utcMs, kd);
+  }
+
+  // Блокировка поля числа КД
   window.kdMonthChanged = function () {
-    var val = document.getElementById('kd-month').value;
+    var val      = document.getElementById('kd-month').value;
     var dayField = document.getElementById('kd-day');
     if (val === '0' || val === '0r') {
       dayField.value    = 0;
@@ -413,75 +441,33 @@ input[disabled], select[disabled] {
     }
   };
 
-  // ── Инициализация сегодняшней датой ─────────────────────────
-  function initToday() {
-    var now  = new Date();
-    var utcMs = Date.UTC(now.getFullYear(), now.getMonth(), now.getDate());
-    var days  = gkToDays(utcMs);
-    var kd    = daysToKD(days);
-
-    document.getElementById('gk-day').value   = now.getDate();
-    document.getElementById('gk-month').value = now.getMonth() + 1;
-    document.getElementById('gk-year').value  = now.getFullYear();
-    document.getElementById('gk-era').value   = 'ce';
-
-    if (kd) {
-      if (kd.type === 'zero' || kd.type === 'joy') {
-        document.getElementById('kd-month').value = kd.type === 'zero' ? '0' : '0r';
-        document.getElementById('kd-day').value   = 0;
-        document.getElementById('kd-day').disabled = true;
-      } else {
-        document.getElementById('kd-month').value = kd.month;
-        document.getElementById('kd-day').value   = kd.day;
-      }
-      document.getElementById('kd-year').value = kd.year;
-    }
-
-    showResult(utcMs, kd);
-  }
-
-   // Заполнить поля КД
-if (kd) {
-  if (kd.type === 'zero' || kd.type === 'joy') {
-    document.getElementById('kd-month').value    = kd.type === 'zero' ? '0' : '0r';
-    document.getElementById('kd-day').value      = 0;
-    document.getElementById('kd-day').disabled   = true;
-  } else {
-    document.getElementById('kd-month').value    = kd.month;
-    document.getElementById('kd-day').value      = kd.day;
-    document.getElementById('kd-day').disabled   = false;
-  }
-  document.getElementById('kd-year').value = kd.year;
-}  
-
-  // ── Конвертация ──────────────────────────────────────────────
+  // Конвертация
   window.convertDate = function () {
     var hint = document.getElementById('conv-hint');
     hint.textContent = '';
 
-    var gkDay   = parseInt(document.getElementById('gk-day').value);
-    var gkMon   = parseInt(document.getElementById('gk-month').value);
-    var gkYear  = parseInt(document.getElementById('gk-year').value);
-    var gkEra   = document.getElementById('gk-era').value;
+    var gkDay  = parseInt(document.getElementById('gk-day').value);
+    var gkMon  = parseInt(document.getElementById('gk-month').value);
+    var gkYear = parseInt(document.getElementById('gk-year').value);
+    var gkEra  = document.getElementById('gk-era').value;
 
-    var kdDay   = parseInt(document.getElementById('kd-day').value) || 1;
-    var kdMon   = document.getElementById('kd-month').value;
-    var kdYear  = parseInt(document.getElementById('kd-year').value);
+    var kdDay  = parseInt(document.getElementById('kd-day').value) || 1;
+    var kdMon  = document.getElementById('kd-month').value;
+    var kdYear = parseInt(document.getElementById('kd-year').value);
 
-    // Определяем направление: ГК → КД если заполнены поля ГК
-    var useGK = (gkDay && gkMon && gkYear);
+    // Определяем направление по тому, какое поле года заполнено
+    // Если оба — приоритет у ГК
+    var useGK = !!(gkDay && gkMon && gkYear);
+    var useKD = !!kdYear;
+
+    if (!useGK && !useKD) return;
 
     if (useGK) {
-      // Проверка эры
-      if (gkEra === 'bce') {
+      // Проверки ГК
+      if (gkEra === 'bce' || gkYear < 1582) {
         hint.textContent = 'Григорианский календарь введён в действие в 1582 году. Конвертация даты до 1582 года недоступна.';
         return;
       }
-      if (gkYear < 1582) {
-        hint.textContent = 'Григорианский календарь введён в действие в 1582 году. Конвертация даты до 1582 года недоступна.';
-        return;
-      }
-
       var utcMs = Date.UTC(gkYear, gkMon - 1, gkDay);
       var days  = gkToDays(utcMs);
       var kd    = daysToKD(days);
@@ -490,35 +476,30 @@ if (kd) {
         hint.textContent = 'Нахрена тебе это? Перепроверь дату — она относится к началу цивилизации.';
       }
 
+      // Заполняем поля КД
+      fillKDFields(kd);
       showResult(utcMs, kd);
 
-    } else if (kdYear) {
+    } else {
       // КД → ГК
       if (kdYear < 3000) {
         hint.textContent = 'Нахрена тебе это? Перепроверь дату — она относится к началу цивилизации.';
       }
-
       var days  = kdToDays(kdYear, kdMon, kdDay);
-      var utcMs = ANCHOR_GK_MS + days * 86400000;
+      var utcMs = ANCHOR_MS + days * 86400000;
+      var gkY   = new Date(utcMs).getUTCFullYear();
 
-      var gkY = new Date(utcMs).getUTCFullYear();
       if (gkY < 1582) {
         hint.textContent = 'Григорианский календарь введён в действие в 1582 году. Конвертация даты до 1582 года недоступна.';
         return;
       }
 
+      // Заполняем поля ГК
+      fillGKFields(utcMs);
       showResult(utcMs, daysToKD(days));
     }
-
-       // Заполнить поля ГК
-var gkD = new Date(utcMs);
-document.getElementById('gk-day').value   = gkD.getUTCDate();
-document.getElementById('gk-month').value = gkD.getUTCMonth() + 1;
-document.getElementById('gk-year').value  = gkD.getUTCFullYear();
-document.getElementById('gk-era').value   = 'ce';
   };
 
-  // Запуск
   initToday();
 
 })();
@@ -527,6 +508,7 @@ document.getElementById('gk-era').value   = 'ce';
 <!-- ══════════════════════════════════════════════
      КОНЕЦ КОНВЕРТЕРА
      ══════════════════════════════════════════════ -->
+
 ## Календарь Дарго
 
 Если вас не смущает, что названия первых месяцев действующего григорианского календаря уводят к языческим временам, а девятый месяц называется седьмым (сент - семь), десятый - восьмым (окта - восемь), одиннадцатый - девятым (нов - девять), двенадцатый - десятым (дека - десять) - можете дальше не читать. ))
