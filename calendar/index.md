@@ -440,6 +440,20 @@ input[disabled], select[disabled] {
     showResult(utcMs, kd);
   }
 
+   // Заполнить поля КД
+if (kd) {
+  if (kd.type === 'zero' || kd.type === 'joy') {
+    document.getElementById('kd-month').value    = kd.type === 'zero' ? '0' : '0r';
+    document.getElementById('kd-day').value      = 0;
+    document.getElementById('kd-day').disabled   = true;
+  } else {
+    document.getElementById('kd-month').value    = kd.month;
+    document.getElementById('kd-day').value      = kd.day;
+    document.getElementById('kd-day').disabled   = false;
+  }
+  document.getElementById('kd-year').value = kd.year;
+}  
+
   // ── Конвертация ──────────────────────────────────────────────
   window.convertDate = function () {
     var hint = document.getElementById('conv-hint');
@@ -495,6 +509,13 @@ input[disabled], select[disabled] {
 
       showResult(utcMs, daysToKD(days));
     }
+
+       // Заполнить поля ГК
+var gkD = new Date(utcMs);
+document.getElementById('gk-day').value   = gkD.getUTCDate();
+document.getElementById('gk-month').value = gkD.getUTCMonth() + 1;
+document.getElementById('gk-year').value  = gkD.getUTCFullYear();
+document.getElementById('gk-era').value   = 'ce';
   };
 
   // Запуск
