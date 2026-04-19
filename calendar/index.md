@@ -86,10 +86,10 @@ title: Календарь
   letter-spacing: 0.05em;
 }
 
-.conv-field-group.f-day   { width: 52px; }
-.conv-field-group.f-month { width: 120px; }
-.conv-field-group.f-year  { width: 76px; }
-.conv-field-group.f-era   { width: 74px; }
+.conv-field-group.f-day   { width: 42px; }
+.conv-field-group.f-month { width: 110px; }
+.conv-field-group.f-year  { width: 60px; }
+.conv-field-group.f-era   { width: 60px; }
 
 .conv-fields input,
 .conv-fields select {
