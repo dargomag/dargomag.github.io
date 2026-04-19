@@ -231,7 +231,7 @@ input[disabled], select[disabled] {
 </style>
 
 <div class="conv-wrap">
-  <div class="conv-title">Конвертер дат</div>
+  <div class="conv-title">Конвертер дат от начала человеческой цивилизации</div>
 
   <div class="conv-row">
 
@@ -276,7 +276,7 @@ input[disabled], select[disabled] {
 
     <!-- Кнопка -->
     <div class="conv-btn-wrap">
-      <button class="conv-btn" onclick="convertDate()">Конвер&shy;тировать</button>
+      <button class="conv-btn" onclick="convertDate()">Конвертировать</button>
     </div>
 
     <!-- КД -->
