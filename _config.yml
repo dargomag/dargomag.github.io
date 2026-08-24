@@ -1,2 +1,9 @@
-title: Джан дерхъаб! - За процветание всего живого! 
+title: Джан дерхъаб! - За процветание всего живого!
 lang: ru
+markdown: kramdown
+defaults:
+  -
+    scope:
+      path: "physics"
+    values:
+      layout: "default"
