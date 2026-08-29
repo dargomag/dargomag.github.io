@@ -1,6 +1,7 @@
 title: Джан дерхъаб! - За процветание всего живого!
 lang: ru
 markdown: kramdown
+math_engine: mathjax
 defaults:
   -
     scope:
