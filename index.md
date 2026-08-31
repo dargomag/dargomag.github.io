@@ -18,7 +18,7 @@ title: Дарго
 
   </td>
     <td valign="top">
-      <img src="cat.jpg" alt="урахинец" style="max-width: 300px;">
+      <img src="cat.jpg" alt="урахинец" style="max-width: 200px;">
     </td>
   </tr>
 </table>
