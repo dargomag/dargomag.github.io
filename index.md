@@ -1,5 +1,5 @@
 ---
-title: Джан дерхъаб!
+title: Дарго
 ---
 
 
@@ -11,7 +11,7 @@ title: Джан дерхъаб!
         <li><a href="path-dargo"> Путь Дарго́</a></li>
         <li><a href="adats"> Адаты </a></li>
         <li><a href="paradigm"> Парадигма Дарго́</a></li>
-        <li><a href="physics"> Физика</a></li>
+        <li><a href="physics"> Божественная Физика</a></li>
         <li><a href="calendar"> Календарь</a></li>
         <li><a href="stones"> Камни</a></li>
       </ul>     
