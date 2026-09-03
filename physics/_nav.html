@@ -1,6 +1,6 @@
 <div style="margin-top:30px; display:flex; justify-content:space-between;">
   <a href="javascript:history.back()" style="color:#336699;text-decoration:none;">← Назад</a>
-  {% if page.next %}<a href="{{ page.next }}" style="color:#336699;text-decoration:none;">Вперед →</a>{% endif %}
+  {% if page.next %}<a href="{{ page.next | replace:'.md','' }}" style="color:#336699;text-decoration:none;">Вперед →</a>{% endif %}
 </div>
 <div style="margin-top:10px; text-align:center; font-weight:bold; color:#666; font-size:24px;">
   Математика — язык Бога, физика с химией — слово Его.
