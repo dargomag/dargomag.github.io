@@ -14,6 +14,7 @@ title: Дарго
         <li><a href="physics"> Божественная Физика</a></li>
         <li><a href="calendar"> Календарь</a></li>
         <li><a href="stones"> Камни</a></li>
+      <li><a href="uslar"> Услар</a></li>
       </ul>     
 
   </td>
